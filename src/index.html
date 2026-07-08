@@ -14,12 +14,29 @@
     <a class="nav-link" href="#Box_Model">Box Model</a>
     <a class="nav-link" href="#Flexbox">Flexbox</a>
     <a class="nav-link" href="#Grid_Layout">Grid Layout</a>
+    <a class="nav-link" href="#CSS_Syntax_and_Rules">CSS Syntax and Rules</a>
+    <a class="nav-link" href="#Cascade_and_Specificity">Cascade and Specificity</a>
+    <a class="nav-link" href="#Colors_and_Backgrounds">Colors and Backgrounds</a>
+    <a class="nav-link" href="#Typography">Typography</a>
+    <a class="nav-link" href="#Text_Styling">Text Styling</a>
+    <a class="nav-link" href="#Sizing_and_Units">Sizing and Units</a>
+    <a class="nav-link" href="#Positioning">Positioning</a>
+    <a class="nav-link" href="#Transitions">Transitions</a>
+    <a class="nav-link" href="#Animations">Animations</a>
+    <a class="nav-link" href="#Media_Queries">Media Queries</a>
   </nav>
   <main id="main-doc">
     <section class="main-section" id="Introduction">
       <header>Introduction</header>
       <p>CSS (Cascading Style Sheets) is a stylesheet language used to describe the presentation of a document written in HTML or XML.</p>
       <p>CSS describes how elements should be rendered on screen, on paper, in speech, or on other media.</p>
+      <p>CSS is among the core languages of the open web and is standardized across browsers according to W3C specifications. Modern CSS is developed in modular fashion, with individual specifications advancing at their own pace rather than following versioned releases like CSS3.</p>
+      <p>This documentation covers fundamental and advanced CSS concepts, from basic syntax to modern layout techniques, helping you build well-styled, responsive web pages.</p>
+      <code>body {
+  font-family: Arial, sans-serif;
+  color: #333;
+  background-color: #fff;
+}</code>
     </section>
     <section class="main-section" id="CSS_Selectors">
       <header>CSS Selectors</header>
@@ -30,7 +47,18 @@
         <li>Type selectors (e.g., h1, p, div)</li>
         <li>Class selectors (e.g., .my-class)</li>
         <li>ID selectors (e.g., #my-id)</li>
+        <li>Attribute selectors (e.g., [type="text"])</li>
+        <li>Pseudo-class selectors (e.g., :hover, :focus)</li>
       </ul>
+      <p>Combinators allow you to combine multiple selectors to target elements based on their relationship in the document tree. The descendant combinator (space), child combinator (>), adjacent sibling combinator (+), and general sibling combinator (~) each express different relationship patterns.</p>
+      <code>/* Descendant: all p inside article */
+article p { line-height: 1.6; }
+
+/* Child: direct children only */
+ul > li { list-style: none; }
+
+/* Adjacent sibling: p immediately after h2 */
+h2 + p { font-weight: bold; }</code>
     </section>
     <section class="main-section" id="Box_Model">
       <header>Box Model</header>
@@ -39,6 +67,14 @@
       <p>Understanding the box model is essential for creating layouts.</p>
       <code>box-sizing: border-box;</code>
       <code>margin: 10px 15px;</code>
+      <p>The <code>box-sizing</code> property controls how the total width and height of an element are calculated. The default value <code>content-box</code> adds padding and border to the specified dimensions, while <code>border-box</code> includes them within the specified width and height, making layout calculations more predictable.</p>
+      <p>Margins between adjacent block elements can collapse, meaning the larger margin value wins instead of adding them together. This behavior affects vertical margins and is important to understand when spacing elements.</p>
+      <ul>
+        <li>Content: the inner area where text and images appear</li>
+        <li>Padding: space between content and border</li>
+        <li>Border: the edge surrounding the padding</li>
+        <li>Margin: space outside the border separating the element from others</li>
+      </ul>
     </section>
     <section class="main-section" id="Flexbox">
       <header>Flexbox</header>
@@ -48,7 +84,17 @@
       <ul>
         <li>justify-content controls horizontal alignment</li>
         <li>align-items controls vertical alignment</li>
+        <li>flex-wrap allows items to wrap onto multiple lines</li>
+        <li>gap creates consistent spacing between flex items</li>
       </ul>
+      <p>The flex container properties (<code>flex-direction</code>, <code>flex-wrap</code>, <code>justify-content</code>, <code>align-items</code>, <code>align-content</code>) control the overall layout behavior, while flex item properties (<code>flex-grow</code>, <code>flex-shrink</code>, <code>flex-basis</code>, <code>align-self</code>, <code>order</code>) let individual items adjust their size and position within the container.</p>
+      <code>.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}</code>
     </section>
     <section class="main-section" id="Grid_Layout">
       <header>Grid Layout</header>
@@ -58,6 +104,260 @@
       <code>grid-template-columns: 1fr 1fr;</code>
       <ul>
         <li>Grid is ideal for page-level layouts</li>
+        <li>Grid items can be placed explicitly using line numbers or named areas</li>
+        <li>The <code>fr</code> unit distributes available space proportionally</li>
+      </ul>
+      <p>Grid introduces powerful features like the <code>fr</code> unit for flexible track sizing, <code>grid-template-areas</code> for visual placement naming, and <code>auto-fill</code>/<code>auto-fit</code> for responsive layouts without media queries. The <code>gap</code> shorthand provides consistent spacing between both rows and columns.</p>
+      <code>.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+  gap: 1.5rem;
+}
+
+.header {
+  grid-column: 1 / -1;
+}</code>
+    </section>
+    <section class="main-section" id="CSS_Syntax_and_Rules">
+      <header>CSS Syntax and Rules</header>
+      <p>CSS syntax is built around rulesets, also called rules. A ruleset consists of a selector and a declaration block. The selector specifies which HTML elements to target, and the declaration block contains one or more declarations enclosed in curly braces.</p>
+      <p>Each declaration pairs a property with a value, separated by a colon and terminated by a semicolon. Multiple declarations are stacked within the same block to define all the visual characteristics for the selected elements.</p>
+      <code>selector {
+  property: value;
+  property: value;
+}</code>
+      <p>At-rules are a special category of CSS statements that begin with an @ symbol. They extend CSS capabilities by controlling how styles are applied under specific conditions. Common at-rules include <code>@media</code> for responsive design, <code>@keyframes</code> for animations, <code>@font-face</code> for custom fonts, and <code>@import</code> for including external stylesheets.</p>
+      <p>CSS is whitespace-insensitive, meaning line breaks and spaces between tokens are generally ignored. However, proper indentation and formatting are essential for readability and maintainability, especially in projects with many rules.</p>
+      <ul>
+        <li>Selectors target HTML elements</li>
+        <li>Declaration blocks contain property-value pairs</li>
+        <li>At-rules begin with @ and provide conditional or import behavior</li>
+        <li>Comments use /* */ syntax and can span multiple lines</li>
+      </ul>
+    </section>
+    <section class="main-section" id="Cascade_and_Specificity">
+      <header>Cascade and Specificity</header>
+      <p>The cascade is the algorithm that determines which CSS rules apply when multiple rules target the same element. It considers importance, specificity, source order, and origin to resolve conflicts and produce the final computed style.</p>
+      <p>Specificity is a weight system that browsers use to decide which property values are most relevant to an element. Each selector type carries a different weight: inline styles have the highest specificity, followed by IDs, classes and attributes, and finally type selectors.</p>
+      <code>/* Specificity: 0,0,0,1 (type) */
+p { color: blue; }
+
+/* Specificity: 0,0,1,0 (class) */
+.text { color: red; }
+
+/* Specificity: 0,1,0,0 (ID) */
+#intro { color: green; }</code>
+      <p>The <code>!important</code> flag overrides normal specificity, but should be used sparingly as it makes debugging and maintenance more difficult. When <code>!important</code> is present, the rule with the highest specificity among those marked important wins.</p>
+      <ul>
+        <li>Inline styles beat everything in normal flow</li>
+        <li>ID selectors beat class selectors</li>
+        <li>Class selectors beat type selectors</li>
+        <li>Source order breaks ties: later rules override earlier ones</li>
+        <li><code>!important</code> reverses normal specificity but should be avoided</li>
+      </ul>
+    </section>
+    <section class="main-section" id="Colors_and_Backgrounds">
+      <header>Colors and Backgrounds</header>
+      <p>CSS provides multiple ways to define colors, including named colors, hexadecimal notation, RGB/RGBA, HSL/HSLA, and the modern <code>color()</code> function. Each format offers different advantages for readability, precision, and color space support.</p>
+      <p>The <code>background</code> shorthand property sets all background properties at once: color, image, position, size, repeat, attachment, and clip. Backgrounds can be solid colors, gradient patterns, images, or combinations of multiple layers stacked on top of each other.</p>
+      <code>/* Named color */
+color: crimson;
+
+/* Hexadecimal */
+color: #ff6347;
+
+/* RGB with alpha */
+color: rgba(255, 99, 71, 0.8);
+
+/* HSL with alpha */
+color: hsla(0, 100%, 66%, 0.8);</code>
+      <p>Gradients are background images generated dynamically by the browser. Linear gradients transition along a straight line, radial gradients radiate from a center point, and conic gradients rotate around a central axis. Multiple gradients can be combined to create complex visual effects.</p>
+      <ul>
+        <li>Hex colors are widely used and compact (#RRGGBB or #RGB)</li>
+        <li>RGBA adds an alpha channel for transparency control</li>
+        <li>HSLA is more intuitive for humans to read and adjust</li>
+        <li>Background layers stack from top to bottom</li>
+      </ul>
+      <code>background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);</code>
+    </section>
+    <section class="main-section" id="Typography">
+      <header>Typography</header>
+      <p>CSS typography controls the appearance of text on a web page. The <code>font-family</code> property specifies which typeface to use, with fallback stacks ensuring the browser can find an available font. Generic families like serif, sans-serif, and monospace serve as final fallbacks.</p>
+      <p>Web fonts can be loaded using the <code>@font-face</code> at-rule, which tells the browser where to download font files. Services like Google Fonts make this process easier by hosting font files and providing ready-to-use CSS snippets. Variable fonts offer multiple weights and styles within a single file.</p>
+      <code>@font-face {
+  font-family: 'MyCustomFont';
+  src: url('fonts/custom.woff2') format('woff2');
+}
+
+body {
+  font-family: 'MyCustomFont', 'Segoe UI', Tahoma, sans-serif;
+}</code>
+      <p>Font size can be specified in various units: pixels provide precise control, em units are relative to the parent font size, rem units are relative to the root element, and percentage units scale proportionally. The <code>font-weight</code> property controls boldness, ranging from 100 (thin) to 900 (black), with 400 being normal and 700 being bold.</p>
+      <ul>
+        <li>Always provide a fallback font stack</li>
+        <li>Use WOFF2 format for optimal web font performance</li>
+        <li>rem units are preferred for accessibility and scalability</li>
+        <li>Limit the number of custom fonts to reduce page load</li>
+      </ul>
+    </section>
+    <section class="main-section" id="Text_Styling">
+      <header>Text Styling</header>
+      <p>Beyond font selection, CSS offers many properties for fine-tuning text appearance. The <code>text-align</code> property controls horizontal alignment, while <code>text-decoration</code> adds underlines, overlines, and strikethroughs. The <code>text-transform</code> property changes letter casing without modifying the HTML content.</p>
+      <p>Spacing properties dramatically affect readability. <code>line-height</code> controls the space between lines, <code>letter-spacing</code> adjusts the space between characters, and <code>word-spacing</code> affects the gap between words. Proper spacing makes text comfortable to read across different screen sizes.</p>
+      <code>p {
+  text-align: justify;
+  line-height: 1.8;
+  letter-spacing: 0.02em;
+  text-indent: 2rem;
+}
+
+h2 {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}</code>
+      <p>The <code>text-shadow</code> property adds depth to text by applying one or more shadow effects. It accepts offset values, blur radius, and color. Multiple shadows can be stacked by separating them with commas, enabling effects like engraved text, glowing text, or letterpress styles.</p>
+      <ul>
+        <li>Use <code>text-decoration</code> for links, not for emphasis</li>
+        <li><code>text-transform: uppercase</code> avoids retyping HTML</li>
+        <li><code>white-space</code> controls how whitespace in HTML is handled</li>
+        <li><code>text-overflow: ellipsis</code> adds an ellipsis to truncated text</li>
+      </ul>
+      <code>text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);</code>
+    </section>
+    <section class="main-section" id="Sizing_and_Units">
+      <header>Sizing and Units</header>
+      <p>CSS provides a rich set of units for specifying lengths, sizes, and distances. Absolute units like px, pt, and cm are fixed and do not scale with the viewport. Pixels are the most common absolute unit for screen-based layouts.</p>
+      <p>Relative units are more flexible and responsive. The em unit is relative to the parent element's font size, rem is relative to the root font size, percentage is relative to the parent element's same property, and viewport units (vw, vh, vmin, vmax) are relative to the viewport dimensions.</p>
+      <code>/* Absolute unit */
+.box { width: 300px; }
+
+/* Relative to parent font size */
+.child { padding: 2em; }
+
+/* Relative to root font size */
+.content { margin: 1.5rem; }
+
+/* Viewport-relative */
+.hero { height: 100vh; }</code>
+      <p>The <code>calc()</code> function allows mathematical operations between values of different units, enabling hybrid sizing strategies. For example, you can combine percentages with fixed lengths to create fluid layouts with precise constraints.</p>
+      <ul>
+        <li>px for borders and fixed-size elements</li>
+        <li>rem for font sizes and spacing in scalable layouts</li>
+        <li>% for fluid widths within containers</li>
+        <li>vw/vh for full-viewport sections</li>
+        <li>calc() for combining different unit types</li>
+      </ul>
+      <code>width: calc(100% - 40px);</code>
+    </section>
+    <section class="main-section" id="Positioning">
+      <header>Positioning</header>
+      <p>CSS positioning controls how elements are placed in the document layout. The <code>position</code> property accepts five values: static (default), relative, absolute, fixed, and sticky. Each value changes how the element is positioned and how it affects surrounding elements.</p>
+      <p>Static positioning follows the normal document flow. Relative positioning shifts an element relative to its normal position without removing it from the flow. Absolute positioning removes the element from the flow and positions it relative to its nearest positioned ancestor.</p>
+      <code>.relative-box {
+  position: relative;
+  top: 20px;
+  left: 10px;
+}
+
+.absolute-box {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.fixed-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}</code>
+      <p>Fixed positioning anchors an element to the viewport, keeping it visible during scrolling. Sticky positioning is a hybrid that toggles between relative and fixed based on scroll position, making it ideal for section headers that should stick while scrolling through content.</p>
+      <ul>
+        <li>Static is the default — no positioning applied</li>
+        <li>Relative keeps the element in the document flow</li>
+        <li>Absolute removes the element from the flow</li>
+        <li>Fixed pins to the viewport regardless of scroll</li>
+        <li>Sticky becomes fixed after reaching a scroll threshold</li>
+      </ul>
+    </section>
+    <section class="main-section" id="Transitions">
+      <header>Transitions</header>
+      <p>CSS transitions allow property changes to occur smoothly over a specified duration, rather than instantaneously. A transition animates the change from one property value to another when a state change triggers it, such as hovering over an element or adding a class.</p>
+      <p>The <code>transition</code> shorthand combines four sub-properties: <code>transition-property</code> specifies which properties to animate, <code>transition-duration</code> sets how long the animation takes, <code>transition-timing-function</code> controls the acceleration curve, and <code>transition-delay</code> adds a wait time before the animation starts.</p>
+      <code>.button {
+  background-color: blue;
+  color: white;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.button:hover {
+  background-color: darkblue;
+  transform: scale(1.05);
+}</code>
+      <p>Not all properties can be transitioned. Only properties with interpolatable values — numbers, colors, transforms, and similar — support smooth transitions. Properties like <code>display</code> cannot be transitioned because they have no intermediate state between values.</p>
+      <ul>
+        <li>Use <code>ease</code> for natural-looking deceleration</li>
+        <li>Keep durations between 200ms and 500ms for UI elements</li>
+        <li>Transition only <code>opacity</code> and <code>transform</code> for GPU-accelerated performance</li>
+        <li>Respect <code>prefers-reduced-motion</code> for accessibility</li>
+      </ul>
+    </section>
+    <section class="main-section" id="Animations">
+      <header>Animations</header>
+      <p>CSS animations provide more control than transitions by allowing multi-step animations with keyframes. The <code>@keyframes</code> at-rule defines the animation sequence by specifying styles at various points along the animation timeline, from 0% (start) to 100% (end).</p>
+      <p>The <code>animation</code> shorthand combines multiple properties: name, duration, timing function, delay, iteration count, direction, fill mode, and play state. Animations can run once, loop infinitely, play in reverse, or alternate between forward and reverse on successive iterations.</p>
+      <code>@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.element {
+  animation: fadeIn 1s ease-out forwards;
+}</code>
+      <p>Animation events like <code>animationstart</code>, <code>animationend</code>, and <code>animationiteration</code> can be detected for coordinating JavaScript behavior, but all animation logic itself can be implemented entirely in CSS. Combining multiple animations on the same element is possible by comma-separating the animation values.</p>
+      <ul>
+        <li>Use <code>from</code> and <code>to</code> for simple two-state animations</li>
+        <li>Use percentage keyframes for multi-step sequences</li>
+        <li><code>animation-fill-mode: forwards</code> retains the end state</li>
+        <li><code>infinite</code> loops the animation indefinitely</li>
+        <li>Test animation impact with <code>prefers-reduced-motion</code></li>
+      </ul>
+    </section>
+    <section class="main-section" id="Media_Queries">
+      <header>Media Queries</header>
+      <p>Media queries are a cornerstone of responsive web design. They allow CSS rules to be applied conditionally based on characteristics of the user's device, such as screen width, height, orientation, resolution, or even user preferences like color scheme.</p>
+      <p>The <code>@media</code> at-rule takes a media type (screen, print, speech) and one or more feature expressions. When the conditions are met, the enclosed styles override or supplement the default styles. This enables the same HTML to adapt to phones, tablets, laptops, and desktops without changes.</p>
+      <code>/* Mobile first: base styles */
+.container {
+  display: block;
+}
+
+/* Tablet and above */
+@media (min-width: 768px) {
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Desktop and above */
+@media (min-width: 1024px) {
+  .container {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}</code>
+      <p>Modern media queries also support features like <code>prefers-color-scheme</code> for dark mode, <code>prefers-reduced-motion</code> for accessibility, <code>prefers-contrast</code> for high contrast needs, and <code>hover</code> for detecting touch devices. These features help create inclusive designs that adapt to user preferences.</p>
+      <ul>
+        <li>Use mobile-first approach: base styles for mobile, then enhance upward</li>
+        <li>Common breakpoints: 768px (tablet), 1024px (laptop), 1440px (desktop)</li>
+        <li>Test actual content, not just device widths</li>
+        <li>Combine media queries with logical operators (and, not, only)</li>
       </ul>
     </section>
   </main>

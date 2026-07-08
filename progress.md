@@ -96,7 +96,48 @@ Created the foundational HTML structure and CSS setup that satisfies FreeCodeCam
 
 ---
 
-# Lessons Learned
+## 002 — CSS Topics Content
+
+**Status:** Completed
+**Date:** 2026-07-08
+
+**Summary:**
+Expanded the CSS Technical Documentation from 5 placeholder sections to 15 fully written CSS topics. Each topic includes explanatory paragraphs, code examples, and list items. Content was researched from MDN Web Docs and written in original paraphrased form. The sidebar navigation was extended accordingly with matching `href` anchors.
+
+**Files modified:**
+- `src/index.html` — Navbar expanded from 5 to 15 nav-links; main content expanded from 5 to 15 sections
+- `src/styles.css` — Added breakpoints for tablet (1024px) and mobile (768px), improved focus indicators, added `prefers-reduced-motion` support
+
+**Topics added (10 new):**
+- CSS Syntax and Rules, Cascade and Specificity, Colors and Backgrounds, Typography, Text Styling, Sizing and Units, Positioning, Transitions, Animations, Media Queries
+
+**Verification — tasks.md (17/17 complete):**
+- Task 1: 15 CSS topics researched from MDN, ordered basic to advanced
+- Task 2: Original content written for each topic (paraphrased, not copied)
+- Task 3: 15 nav-link elements in `<nav>` with matching href attributes
+- Task 4: 15 `<section id="topic-id">` elements inside `<main>`
+- Task 5: Each section has heading, explanation paragraphs, code examples
+- Task 6-8: Two-column layout with fixed sidebar and scrollable content
+- Task 9: Smooth scrolling via `scroll-behavior: smooth`
+- Task 10: Responsive breakpoints at 1024px (tablet) and 768px (mobile)
+- Task 11: All sidebar links navigate correctly to sections (verified)
+- Task 12: Feature 001 structure untouched (only additions)
+- Task 13-14: No JavaScript, valid HTML structure
+- Task 15: Focus indicators visible for keyboard navigation
+- Task 16: Content cross-checked with MDN
+- Task 17: Full self-evaluation completed
+
+**Decisions made:**
+- content-box and border-box explanation added to Box Model section
+- prefers-reduced-motion media query added for accessibility compliance
+- Breakpoint at 1024px for tablets before full collapse at 768px
+- Focus indicator uses dark outline color (#333) for contrast on blue background
+
+**Self-evaluation:** All tasks complete. Feature 001 preserved. Content accurate per MDN.
+
+**Confidence level:** High
+
+---
 
 _(To be populated as development progresses)_
 
