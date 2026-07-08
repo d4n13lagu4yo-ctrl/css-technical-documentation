@@ -7,7 +7,8 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <nav id="navbar">
+  <a href="#main-doc" class="skip-link" id="skip-link">Skip to main content</a>
+  <nav id="navbar" aria-label="Main navigation">
     <header>CSS Technical Documentation</header>
     <a class="nav-link" href="#Introduction">Introduction</a>
     <a class="nav-link" href="#CSS_Selectors">CSS Selectors</a>
@@ -25,8 +26,8 @@
     <a class="nav-link" href="#Animations">Animations</a>
     <a class="nav-link" href="#Media_Queries">Media Queries</a>
   </nav>
-  <main id="main-doc">
-    <section class="main-section" id="Introduction">
+  <main id="main-doc" aria-label="Main content" tabindex="-1">
+    <section class="main-section" id="Introduction" tabindex="-1">
       <header>Introduction</header>
       <p>CSS (Cascading Style Sheets) is a stylesheet language used to describe the presentation of a document written in HTML or XML.</p>
       <p>CSS describes how elements should be rendered on screen, on paper, in speech, or on other media.</p>
@@ -38,7 +39,7 @@
   background-color: #fff;
 }</code>
     </section>
-    <section class="main-section" id="CSS_Selectors">
+    <section class="main-section" id="CSS_Selectors" tabindex="-1">
       <header>CSS Selectors</header>
       <p>Selectors are patterns used to select the HTML elements you want to style.</p>
       <p>There are many types of selectors, each with different specificity and use cases.</p>
@@ -60,7 +61,7 @@ ul > li { list-style: none; }
 /* Adjacent sibling: p immediately after h2 */
 h2 + p { font-weight: bold; }</code>
     </section>
-    <section class="main-section" id="Box_Model">
+    <section class="main-section" id="Box_Model" tabindex="-1">
       <header>Box Model</header>
       <p>The CSS box model is a fundamental concept that describes how elements are structured.</p>
       <p>Every element is composed of content, padding, border, and margin areas.</p>
@@ -76,7 +77,7 @@ h2 + p { font-weight: bold; }</code>
         <li>Margin: space outside the border separating the element from others</li>
       </ul>
     </section>
-    <section class="main-section" id="Flexbox">
+    <section class="main-section" id="Flexbox" tabindex="-1">
       <header>Flexbox</header>
       <p>Flexbox is a one-dimensional layout method for arranging items in rows or columns.</p>
       <p>It provides powerful alignment and distribution capabilities.</p>
@@ -96,7 +97,7 @@ h2 + p { font-weight: bold; }</code>
   gap: 1rem;
 }</code>
     </section>
-    <section class="main-section" id="Grid_Layout">
+    <section class="main-section" id="Grid_Layout" tabindex="-1">
       <header>Grid Layout</header>
       <p>CSS Grid Layout is a two-dimensional layout system for the web.</p>
       <p>Grid allows you to create complex layouts with rows and columns.</p>
@@ -119,7 +120,7 @@ h2 + p { font-weight: bold; }</code>
   grid-column: 1 / -1;
 }</code>
     </section>
-    <section class="main-section" id="CSS_Syntax_and_Rules">
+    <section class="main-section" id="CSS_Syntax_and_Rules" tabindex="-1">
       <header>CSS Syntax and Rules</header>
       <p>CSS syntax is built around rulesets, also called rules. A ruleset consists of a selector and a declaration block. The selector specifies which HTML elements to target, and the declaration block contains one or more declarations enclosed in curly braces.</p>
       <p>Each declaration pairs a property with a value, separated by a colon and terminated by a semicolon. Multiple declarations are stacked within the same block to define all the visual characteristics for the selected elements.</p>
@@ -136,7 +137,7 @@ h2 + p { font-weight: bold; }</code>
         <li>Comments use /* */ syntax and can span multiple lines</li>
       </ul>
     </section>
-    <section class="main-section" id="Cascade_and_Specificity">
+    <section class="main-section" id="Cascade_and_Specificity" tabindex="-1">
       <header>Cascade and Specificity</header>
       <p>The cascade is the algorithm that determines which CSS rules apply when multiple rules target the same element. It considers importance, specificity, source order, and origin to resolve conflicts and produce the final computed style.</p>
       <p>Specificity is a weight system that browsers use to decide which property values are most relevant to an element. Each selector type carries a different weight: inline styles have the highest specificity, followed by IDs, classes and attributes, and finally type selectors.</p>
@@ -157,7 +158,7 @@ p { color: blue; }
         <li><code>!important</code> reverses normal specificity but should be avoided</li>
       </ul>
     </section>
-    <section class="main-section" id="Colors_and_Backgrounds">
+    <section class="main-section" id="Colors_and_Backgrounds" tabindex="-1">
       <header>Colors and Backgrounds</header>
       <p>CSS provides multiple ways to define colors, including named colors, hexadecimal notation, RGB/RGBA, HSL/HSLA, and the modern <code>color()</code> function. Each format offers different advantages for readability, precision, and color space support.</p>
       <p>The <code>background</code> shorthand property sets all background properties at once: color, image, position, size, repeat, attachment, and clip. Backgrounds can be solid colors, gradient patterns, images, or combinations of multiple layers stacked on top of each other.</p>
@@ -181,7 +182,7 @@ color: hsla(0, 100%, 66%, 0.8);</code>
       </ul>
       <code>background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);</code>
     </section>
-    <section class="main-section" id="Typography">
+    <section class="main-section" id="Typography" tabindex="-1">
       <header>Typography</header>
       <p>CSS typography controls the appearance of text on a web page. The <code>font-family</code> property specifies which typeface to use, with fallback stacks ensuring the browser can find an available font. Generic families like serif, sans-serif, and monospace serve as final fallbacks.</p>
       <p>Web fonts can be loaded using the <code>@font-face</code> at-rule, which tells the browser where to download font files. Services like Google Fonts make this process easier by hosting font files and providing ready-to-use CSS snippets. Variable fonts offer multiple weights and styles within a single file.</p>
@@ -201,7 +202,7 @@ body {
         <li>Limit the number of custom fonts to reduce page load</li>
       </ul>
     </section>
-    <section class="main-section" id="Text_Styling">
+    <section class="main-section" id="Text_Styling" tabindex="-1">
       <header>Text Styling</header>
       <p>Beyond font selection, CSS offers many properties for fine-tuning text appearance. The <code>text-align</code> property controls horizontal alignment, while <code>text-decoration</code> adds underlines, overlines, and strikethroughs. The <code>text-transform</code> property changes letter casing without modifying the HTML content.</p>
       <p>Spacing properties dramatically affect readability. <code>line-height</code> controls the space between lines, <code>letter-spacing</code> adjusts the space between characters, and <code>word-spacing</code> affects the gap between words. Proper spacing makes text comfortable to read across different screen sizes.</p>
@@ -225,7 +226,7 @@ h2 {
       </ul>
       <code>text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);</code>
     </section>
-    <section class="main-section" id="Sizing_and_Units">
+    <section class="main-section" id="Sizing_and_Units" tabindex="-1">
       <header>Sizing and Units</header>
       <p>CSS provides a rich set of units for specifying lengths, sizes, and distances. Absolute units like px, pt, and cm are fixed and do not scale with the viewport. Pixels are the most common absolute unit for screen-based layouts.</p>
       <p>Relative units are more flexible and responsive. The em unit is relative to the parent element's font size, rem is relative to the root font size, percentage is relative to the parent element's same property, and viewport units (vw, vh, vmin, vmax) are relative to the viewport dimensions.</p>
@@ -250,7 +251,7 @@ h2 {
       </ul>
       <code>width: calc(100% - 40px);</code>
     </section>
-    <section class="main-section" id="Positioning">
+    <section class="main-section" id="Positioning" tabindex="-1">
       <header>Positioning</header>
       <p>CSS positioning controls how elements are placed in the document layout. The <code>position</code> property accepts five values: static (default), relative, absolute, fixed, and sticky. Each value changes how the element is positioned and how it affects surrounding elements.</p>
       <p>Static positioning follows the normal document flow. Relative positioning shifts an element relative to its normal position without removing it from the flow. Absolute positioning removes the element from the flow and positions it relative to its nearest positioned ancestor.</p>
@@ -280,7 +281,7 @@ h2 {
         <li>Sticky becomes fixed after reaching a scroll threshold</li>
       </ul>
     </section>
-    <section class="main-section" id="Transitions">
+    <section class="main-section" id="Transitions" tabindex="-1">
       <header>Transitions</header>
       <p>CSS transitions allow property changes to occur smoothly over a specified duration, rather than instantaneously. A transition animates the change from one property value to another when a state change triggers it, such as hovering over an element or adding a class.</p>
       <p>The <code>transition</code> shorthand combines four sub-properties: <code>transition-property</code> specifies which properties to animate, <code>transition-duration</code> sets how long the animation takes, <code>transition-timing-function</code> controls the acceleration curve, and <code>transition-delay</code> adds a wait time before the animation starts.</p>
@@ -302,7 +303,7 @@ h2 {
         <li>Respect <code>prefers-reduced-motion</code> for accessibility</li>
       </ul>
     </section>
-    <section class="main-section" id="Animations">
+    <section class="main-section" id="Animations" tabindex="-1">
       <header>Animations</header>
       <p>CSS animations provide more control than transitions by allowing multi-step animations with keyframes. The <code>@keyframes</code> at-rule defines the animation sequence by specifying styles at various points along the animation timeline, from 0% (start) to 100% (end).</p>
       <p>The <code>animation</code> shorthand combines multiple properties: name, duration, timing function, delay, iteration count, direction, fill mode, and play state. Animations can run once, loop infinitely, play in reverse, or alternate between forward and reverse on successive iterations.</p>
@@ -329,7 +330,7 @@ h2 {
         <li>Test animation impact with <code>prefers-reduced-motion</code></li>
       </ul>
     </section>
-    <section class="main-section" id="Media_Queries">
+    <section class="main-section" id="Media_Queries" tabindex="-1">
       <header>Media Queries</header>
       <p>Media queries are a cornerstone of responsive web design. They allow CSS rules to be applied conditionally based on characteristics of the user's device, such as screen width, height, orientation, resolution, or even user preferences like color scheme.</p>
       <p>The <code>@media</code> at-rule takes a media type (screen, print, speech) and one or more feature expressions. When the conditions are met, the enclosed styles override or supplement the default styles. This enables the same HTML to adapt to phones, tablets, laptops, and desktops without changes.</p>
